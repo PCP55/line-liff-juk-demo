@@ -204,6 +204,7 @@
         console.log('Hi There')
         console.log(sellerUserId)
         console.log('Hi There')
+
         let preGet = {
             "id": { sellerUserId },
             "typeSource": "user"
@@ -217,6 +218,9 @@
             data: JSON.stringify(preGet),
             dataType: 'json',
             error: function (data) {
+                console.log('Hello There')
+                console.log(sellerUserId)
+                console.log('Hello There')
                 console.log("upload error", data);
                 console.log(data.getAllResponseHeaders());
             },
