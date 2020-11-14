@@ -226,6 +226,8 @@
             },
             success: function (data) {
                 let displayName = data.data.data[0].displayName
+                console.log('DisplayName')
+                console.log(displayName)
                 document.getElementById("line_name").innerHTML = 'By ' + displayName
                 // document.getElementById("line_name").innerHTML = localStorage.getItem("seller_id")
             }
