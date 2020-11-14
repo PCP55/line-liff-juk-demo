@@ -134,6 +134,11 @@
                     localStorage.setItem("products", JSON.stringify(products))
 
                     // console.log(products)
+
+                    var sellerId = queryData.data.data[0].userId
+                    // localStorage.setItem("products", JSON.stringify(products))
+                    console.log(sellerId)
+
                     localStorage.setItem("queryData", JSON.stringify(queryData))
 
                     var sizeMenu = products.length
@@ -312,6 +317,8 @@
             var vConsole = new VConsole();
             console.log('Hello world');
         }
+
+        document.getElementById("linename").innerHTML = 
 
     </script>
 </body>
