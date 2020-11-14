@@ -127,6 +127,7 @@
             dataType: "json",
             success: function (data) {
                 queryData = data;
+                console.log(queryData)
                 if (queryData.data.status = true) {
 
                     var products = queryData.data.data[0].products
