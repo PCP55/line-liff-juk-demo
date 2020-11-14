@@ -136,7 +136,7 @@
                     // console.log(products)
 
                     var sellerId = queryData.data.data[0].userId
-                    // localStorage.setItem("products", JSON.stringify(products))
+                    localStorage.setItem("sellerId", sellerId)
                     console.log(sellerId)
 
                     localStorage.setItem("queryData", JSON.stringify(queryData))
@@ -318,7 +318,7 @@
             console.log('Hello world');
         }
 
-        document.getElementById("linename").innerHTML = 
+        document.getElementById("linename").innerHTML = localStorage.getItem("sellerId")
 
     </script>
 </body>
