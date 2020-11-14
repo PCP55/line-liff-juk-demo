@@ -195,6 +195,7 @@ img {
   padding-left: 10.5px;
   padding-right: 10.5px;
   border-radius: 12px;
+  box-shadow: 1px 0.8px;
 }
 
 #paymentMethodBttn {
