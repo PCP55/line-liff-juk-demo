@@ -167,6 +167,9 @@
             localStorage.clear();
         }
 
+        var displayName = localStorage.getItem("displayName")
+        document.getElementById("line_name").innerHTML = 'By ' + displayName
+                            
 
         // async function main() {
 

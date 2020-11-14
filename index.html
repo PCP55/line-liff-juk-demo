@@ -137,7 +137,7 @@
 
                     var sellerId = queryData.data.data[0].userId
                     localStorage.setItem("seller_id", String(sellerId))
-                    console.log(sellerId)
+                    // console.log(sellerId)
 
                     localStorage.setItem("queryData", JSON.stringify(queryData))
 
@@ -191,9 +191,9 @@
 
 
                     var sellerId = localStorage.getItem("seller_id")
-                    console.log('Hi There')
-                    console.log(sellerId)
-                    console.log('Hi There')
+                    // console.log('Hi There')
+                    // console.log(sellerId)
+                    // console.log('Hi There')
 
                     let preGet = {
                         "id": sellerId,
@@ -208,17 +208,18 @@
                         data: JSON.stringify(preGet),
                         dataType: 'json',
                         error: function (data) {
-                            console.log('Hello There')
+                            // console.log('Hello There')
                             console.log(sellerUserId)
-                            console.log('Hello There')
+                            // console.log('Hello There')
                             console.log("upload error", data);
                             console.log(data.getAllResponseHeaders());
                         },
                         success: function (data) {
                             let displayName = data.data.data[0].displayName
-                            console.log('DisplayName')
-                            console.log(displayName)
+                            // console.log('DisplayName')
+                            // console.log(displayName)
                             document.getElementById("line_name").innerHTML = 'By ' + displayName
+                            localStorage.setItem("displayName", displayName)
                             // document.getElementById("line_name").innerHTML = localStorage.getItem("seller_id")
                         }
                     }
