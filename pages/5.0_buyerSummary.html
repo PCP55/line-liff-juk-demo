@@ -203,6 +203,33 @@
 
 
 
+        // $("button").click(function (e) {
+        //     e.preventDefault();
+        //     let orderData = {
+        //         "userId": localStorage.getItem("userId"), "paymentMethod": "cod",
+        //         "order_list": JSON.parse(localStorage.getItem("order_list")),
+        //         "storeId": localStorage.getItem("storeId"), "createDate": "1605261606487",
+        //         "total_price": localStorage.getItem("sumCost"), "status": "pending",
+        //         "userContact": { "name": nameCus, "tel": phoneCus, "pick_up": placeCus }
+        //     }
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "https://linehack-api-j3f2uydk7a-as.a.run.app/createOrder",
+        //         // data: JSON.stringify({"id" : "vlmxLUoT9JhaF2KtnpAH",   "typeSource" : "store"}),
+        //         data: JSON.stringify(orderData),
+        //         contentType: "application/json; charset=utf-8",
+        //         dataType: "json",
+        //         success: function (result) {
+        //             alert('สั่งซื้อสำเร็จ');
+        //             closed();
+        //         },
+        //         error: function (result) {
+        //             alert('error');
+        //         }
+        //     });
+        // });
+
+
         $("button").click(function (e) {
             e.preventDefault();
             let orderData = {
@@ -220,8 +247,30 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
+                    
+                    $.ajax({
+                        url: "https://linehack-j3f2uydk7a-as.a.run.app/notify",
+                        type: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        data: JSON.stringify({
+                            "typeSource": "user",
+                            "userId": localStorage.getItem("seller_id"),
+                            "message": "มีออเดอร์เข้าครับบบ https://liff.line.me/1655215015-V58PdOrL?vconsole=1",
+                            "type": "message"
+                        }),
+                        dataType: 'json',
+                        error: function (data) {
+                            console.log("upload error", data);
+                            console.log(data.getAllResponseHeaders());
+                        },
+                        success: function (data) {
+                            closed();
+                        }
+                    })
+                    
                     alert('สั่งซื้อสำเร็จ');
-                    closed();
                 },
                 error: function (result) {
                     alert('error');
