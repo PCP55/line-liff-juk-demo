@@ -220,7 +220,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-                    alert('ok');
+                    alert('สั่งซื้อสำเร็จ');
                     closed()
                 },
                 error: function (result) {
@@ -235,22 +235,27 @@
 
         }
 
-        async function getUserProfile() {
-            const profile = await liff.getProfile()
-            localStorage.setItem("userId", profile.userId)
-            console.log(profile.userId)
+        // async function getUserProfile() {
+        //     const profile = await liff.getProfile()
+        //     localStorage.setItem("userId", profile.userId)
+        //     console.log(profile.userId)
 
-        }
+        // }
+        // async function main() {
+        //     liff.ready.then(() => {
+        //         if (liff.isLoggedIn()) {
+        //             getUserProfile()
+        //         } else {
+        //             liff.login()
+        //         }
+        //     })
+        //         await liff.init({ liffId: localStorage.get("liffId") })
+        //     }
+
         async function main() {
-            liff.ready.then(() => {
-                if (liff.isLoggedIn()) {
-                    getUserProfile()
-                } else {
-                    liff.login()
-                }
-            })
-                await liff.init({ liffId: localStorage.get("liffId") })
-            }
+            await liff.init({ liffId: localStorage.get("liffId") })
+        }
+
         main() 
     </script>
 

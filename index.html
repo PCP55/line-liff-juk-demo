@@ -260,7 +260,7 @@
             localStorage.setItem("listOrder", listOrder)
             localStorage.setItem("listNumber", JSON.stringify(listNumber))
             localStorage.setItem("sumCost", cost)
-            localStorage.setItem("mylist",mylist)
+            localStorage.setItem("mylist", mylist)
 
             if (cost == 0) {
                 localStorage.setItem("sumCost", 0)
@@ -278,13 +278,31 @@
         document.write('<link rel="stylesheet" href="style.css?cache=' + new Date().getTime() + '">')
         document.write('<script defer src="app.js?cache=' + new Date().getTime() + '"><\/script>')
 
+        async function getUserProfile() {
+            const profile = await liff.getProfile()
+            localStorage.setItem("userId", profile.userId)
+            console.log(profile.userId)
+        }
+
+        // async function main() {
+        //     const urlParams = new URLSearchParams(window.location.search);
+        //     const liffId = urlParams.get('liffId');
+        //     await liff.init({ liffId: liffId })
+
+        // }
+
 
         async function main() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const liffId = urlParams.get('liffId');
+            liff.ready.then(() => {
+                if (liff.isLoggedIn()) {
+                    getUserProfile()
+                } else {
+                    liff.login()
+                }
+            })
+            // await liff.init({ liffId: "1655215015-q59vjn7K" })
             await liff.init({ liffId: liffId })
-
-        }
+            }
 
         main()
 
