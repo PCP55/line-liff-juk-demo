@@ -185,6 +185,18 @@ img {
   border-radius: 12px;
 }
 
+.copyBttnClass {
+  font-size: 14px;
+  color: black;
+  font-weight: 700;
+  background-color: #FFDB01;
+  border: none;
+  padding: 2px;
+  padding-left: 10.5px;
+  padding-right: 10.5px;
+  border-radius: 12px;
+}
+
 #paymentMethodBttn {
   width: 100%;
   text-align: center;

@@ -50,44 +50,41 @@
                         <p id="sumaPrice" style="font-size: 20px;">120 ฿</p>
                     </div>
                     </p>
-
-
-
-
                 </div>
 
                 <div class="container" style="margin-left: -5px;">
-                    <div class="row" text-align: left;">
-                        <div class="col-3.5">
+                    <div class="row" text-align: right;">
+                        <div class="col-4">
                             <p>เลขบัญชี:</p>
                         </div>
-                        <div class="col" id="bank_acc" style="font-weight: 700;">
+                        <div class="col-4" id="bank_acc" style="font-weight: 600; font-size: 18px;">
                             <p>XXX</p>
                         </div>
-                        <div class="col-2">
-
+                        <div class="col-4">
+                            <button type="button" class="btn btn-primary copyBttnClass" id="orderBttn-${unique_id}"
+                                onclick="copyClip();">copy</button>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-3.5">
+                        <div class="col-4">
                             <p>ธนาคาร:</p>
                         </div>
-                        <div class="col" id="bank_name" style="font-weight: 700;">
+                        <div class="col-4" id="bank_name" style="font-weight: 600; font-size: 18px;">
                             <p>ธนาคารกสิกรไทย</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-3.5">
-                            <p>ชื่อเจ้าของบัญชี:</p>
+                        <div class="col-4">
+                            <p>เจ้าของบัญชี:</p>
                         </div>
-                        <div class="col" id="name" style="font-weight: 700;">
+                        <div class="col-8" id="name" style="font-weight: 600; font-size: 18px;">
                             <p>ชื่อจริง นามสกุล</p>
                         </div>
                     </div>
 
                     <div class="row">
                         <form>
-                            <div class="form-group col-3.5">
+                            <div class="form-group col-4">
                                 <!-- <label for="exampleFormControlFile1">เลือก Slip:</label> -->
                                 <p>เลือก Slip:</p>
                             </div>
@@ -138,8 +135,8 @@
                     {
                         "account_banking": {
                             "bank": "กสิกรไทย",
-                            "firstname": "Thanakorn",
-                            "lastname": "Thipgrathok",
+                            "firstname": "หมีบราวน์",
+                            "lastname": "รักไลน์",
                             "number": "0502624687"
                         },
                         "created_at": 1605093577435,
@@ -228,10 +225,48 @@
         // console.log(name)
 
 
+        // function copyClip() {
+        //     // var copyText = document.getElementById("bank_acc");
+        //     // console.log(copyText.value)
+        //     var copyText = number
+        //     console.log(String(copyText))
+        //     copyText.select();
+        //     copyText.setSelectionRange(0, 20)
+        //     document.execCommand("copy");
+        //     alert("Copied the text: " + copyText.value);
+        // }
+
+
+
+        function copyClip() {
+            var range, selection, worked;
+
+            element = document.getElementById("bank_acc")
+
+            if (document.body.createTextRange) {
+                range = document.body.createTextRange();
+                range.moveToElementText(element);
+                range.select();
+            } else if (window.getSelection) {
+                selection = window.getSelection();
+                range = document.createRange();
+                range.selectNodeContents(element);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }
+
+            try {
+                document.execCommand('copy');
+                alert('คัดลอกเลขบัญชีธนาคารเรียบร้อยแล้ว');
+            }
+            catch (err) {
+                alert('ไม่สามารถคัดลอกได้');
+            }
+        }
 
         async function main() {
 
-            await liff.init({ liffId: localStorage.getItem("liffId")})
+            await liff.init({ liffId: localStorage.getItem("liffId") })
 
         }
 
