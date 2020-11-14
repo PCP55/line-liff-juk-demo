@@ -136,11 +136,8 @@
                     // console.log(products)
 
                     var sellerId = queryData.data.data[0].userId
-                    localStorage.setItem("sellerId", String(sellerId))
-                    
+                    localStorage.setItem("seller_id", String(sellerId))
                     console.log(sellerId)
-                    document.getElementById("line_name").innerHTML = sellerId
-                    // document.getElementById("line_name").innerHTML = localStorage.getItem("sellerId")
 
                     localStorage.setItem("queryData", JSON.stringify(queryData))
 
@@ -198,6 +195,42 @@
                 alert(errMsg);
             }
         });
+
+
+
+
+
+        var sellerUserId = localStorage.getItem("seller_id")
+
+        let preGet = {
+            "id": { sellerUserId },
+            "typeSource": "user"
+        }
+        $.ajax({
+            url: "https://linehack-api-j3f2uydk7a-as.a.run.app/get-data",
+            type: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            data: JSON.stringify(preGet),
+            dataType: 'json',
+            error: function (data) {
+                console.log("upload error", data);
+                console.log(data.getAllResponseHeaders());
+            },
+            success: function (data) {
+                let displayName = data.data.data[0].displayName
+                document.getElementById("line_name").innerHTML = 'By ' + displayName
+                // document.getElementById("line_name").innerHTML = localStorage.getItem("seller_id")
+            }
+        }
+        )
+
+
+
+
+
+
 
 
         var sizeMenu = localStorage.getItem("sizeMenu")
@@ -310,7 +343,7 @@
             })
             // await liff.init({ liffId: "1655215015-q59vjn7K" })
             await liff.init({ liffId: liffId })
-            }
+        }
 
         main()
 
