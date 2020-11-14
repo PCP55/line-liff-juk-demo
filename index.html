@@ -190,13 +190,13 @@
                     }
 
 
-                    var sellerUserId = localStorage.getItem("seller_id")
+                    var sellerId = localStorage.getItem("seller_id")
                     console.log('Hi There')
-                    console.log(sellerUserId)
+                    console.log(sellerId)
                     console.log('Hi There')
 
                     let preGet = {
-                        "id": { sellerUserId },
+                        "id": sellerId,
                         "typeSource": "user"
                     }
                     $.ajax({
